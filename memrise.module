@@ -1,0 +1,17 @@
+#!name=Memrise
+
+#!desc=Memrise解锁会员
+
+#!homepage=https://whatshub.top
+
+#!author= 89996462
+
+#!icon=https://raw.githubusercontent.com/deezertidal/private/main/icons/memrise.png
+
+[MITM]
+
+hostname = %APPEND% api.memrise.com
+
+[Script]
+
+Memrise=type=http-response,pattern=^https:\/\/api\.memrise\.com\/v1\.24,requires-body=1,script-path=https://raw.githubusercontent.com/HaoDH/Surge_module/refs/heads/main/Memrise.js
