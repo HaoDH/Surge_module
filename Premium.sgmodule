@@ -1,7 +1,9 @@
 #!name=波波老师自用Premium
 #!desc=波波老师自用Premium
-#!date=2024-11-01
+#!date=2025-09-18
 #!category=😍BOBO Premium
+#!author= 各位大佬
+#!homepage=https://github.com/BOBOLAOSHIV587/Rules
 
 
 [Rule]
@@ -43,19 +45,6 @@ DOMAIN,*.adukwai.com,REJECT
 ^https://app\.c.nf\.migu\.cn/payment/watch-ad data-type=text data=" " status-code=200
 
 
-# > 酷我音乐解锁会员
-# > 通用广告请求
-https?:\/\/vip1\.kuwo\.cn\/vip\/activity\/kwMemberDay data-type=text data=" " status-code=200
-# > 屏蔽热词
-https?:\/\/hotword\.kuwo\.cn\/hotword\.s data-type=text data=" " status-code=200
-# > 通用广告请求
-https?:\/\/vip1\.kuwo\.cn\/vip_adv\/ data-type=text data=" " status-code=200
-# > 通用广告请求
-https?:\/\/wapi\.kuwo\.cn\/openapi\/v1\/app\/pasterAdvert data-type=text data=" " status-code=200
-# > 应用内弹窗及右下角
-^https?:\/\/mobilead\.kuwo\.cn\/ data-type=text data=" " status-code=200
-
-
 
 [URL Rewrite]
 # > 芒果TV+去广告,页面优化
@@ -70,17 +59,10 @@ https?:\/\/wapi\.kuwo\.cn\/openapi\/v1\/app\/pasterAdvert data-type=text data=" 
 ^https://app\.c\.nf.migu\.cn/strategy/listen-url/v2.5 https://app.c.nf.migu.cn/strategy/listen-url/v2.4 302
 
 
-# > 网易云音乐去除部分广告
-^https?://interface.*\.music\.163\.com/eapi/ad/get - reject
-^https?://interface.*\.music\.163\.com/eapi/ad/config/get - reject
-^https?://interface.*\.music\.163\.com/eapi/ad/iyunIds - reject
-^https?://interface.*\.music\.163\.com/eapi/ad/prefetch/select - reject
-^https?://interface.*\.music\.163\.com/eapi/ad/loading/current - reject
-
 
 [Header Rewrite]
 # > Spotify if-none-match返回304状态码
-http-request ^https:\/\/spclient\.wg\.spotify\.com\/user-customization-service\/v1\/customize$ header-del if-none-match
+http-request ^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/user-customization-service\/v1\/customize$ header-del if-none-match
 
 
 [Script]
@@ -140,10 +122,6 @@ Boom = type=http-response, pattern=^https:\/\/apimboom2\.globaldelight\.net\/itu
 彩云天气SVIP = type=http-response, pattern=https?:\/\/biz\.caiyunapp\.com\/(membership_rights|v2\/user), script-path=https://raw.githubusercontent.com/BOBOLAOSHIV587/Rules/main/JS/CaiYunTianQi-SVIP/JS/JS-1/CaiYunTianQi.js, requires-body=true, max-size=-1, timeout=60
 
 
-# > 彩云小译-登陆后解锁会员
-xiaoyi = type=http-response, pattern=^https:\/\/interpreter\.cyapi\.cn\/, script-path=https://raw.githubusercontent.com/BOBOLAOSHIV587/Rules/main/JS/CaiYunxiaoyi/JS/xiaoyi.js, requires-body=true, max-size=-1, timeout=60
-
-
 # > 扫描全能王-手机扫描仪 解锁黄金会员
 扫描全能王-解锁黄金会员 = type=http-response, pattern=https:\/\/api-cs\.intsig\.net\/purchase\/cs\/query_property, script-path=https://raw.githubusercontent.com/BOBOLAOSHIV587/Rules/main/JS/CamScanner/JS/ScanningAlmighty.js, requires-body=true, max-size=-1, timeout=60
 
@@ -175,10 +153,6 @@ DeezerHiFiProCrack = type=http-request, pattern=^https?:\/\/media\.deezer\.com\/
 
 # > 地震预警-解锁会员
 地震预警-解锁会员 = type=http-response, pattern=^https?:\/\/mobile-new\.chinaeew\.cn\/v\d\/order\/apple\/vip, script-path=https://raw.githubusercontent.com/BOBOLAOSHIV587/Rules/main/JS/DiZhenYuJing/JS/DZYJ.js, requires-body=true, max-size=-1, timeout=60
-
-
-# > 百度不跳转
-DisableBaiduJumpAction = type=http-request, pattern=^https?:\/\/.*\.baidu\.com\/.+, script-path=https://raw.githubusercontent.com/BOBOLAOSHIV587/Rules/main/JS/DisableBaiduJump/JS/DisableBaiduJumpAction.js, timeout=60
 
 
 # > Documents文件管理器+解锁订阅
@@ -276,42 +250,6 @@ VideoFusionVipCrack = type=http-request, pattern=^https?:\/\/commerce-api-.*\.fa
 
 
 
-
-
-# > 酷我音乐解锁会员
-# > 搜索框处理
-Kuwo = type=http-response, pattern=https?:\/\/searchrecterm\.kuwo\.cn\/recterm\.s, script-path=https://raw.githubusercontent.com/BOBOLAOSHIV587/Rules/main/JS/KuWoMusic/JS/Kuwo.js, requires-body=true, max-size=-1, timeout=60
-# > 会员页广告
-Kuwo = type=http-response, pattern=https?:\/\/appi\.kuwo\.cn\/kuwopay\/vip-tab\/page\/cells, script-path=https://raw.githubusercontent.com/BOBOLAOSHIV587/Rules/main/JS/KuWoMusic/JS/Kuwo.js, requires-body=true, max-size=-1, timeout=60
-# > 会员页顶部广告tab
-Kuwo = type=http-response, pattern=https?:\/\/appi\.kuwo\.cn\/kuwopay\/vip-tab\/setting, script-path=https://raw.githubusercontent.com/BOBOLAOSHIV587/Rules/main/JS/KuWoMusic/JS/Kuwo.js, requires-body=true, max-size=-1, timeout=60
-# > 开屏广告
-Kuwo = type=http-response, pattern=https?:\/\/rich\.kuwo\.cn\/AdService, script-path=https://raw.githubusercontent.com/BOBOLAOSHIV587/Rules/main/JS/KuWoMusic/JS/Kuwo.js, requires-body=true, max-size=-1, timeout=60
-# > 数字专辑
-Kuwo = type=http-response, pattern=^https?:\/\/musicpay\.kuwo\.cn\/music\.pay\?newver, script-path=https://raw.githubusercontent.com/BOBOLAOSHIV587/Rules/main/JS/KuWoMusic/JS/Kuwo.js, requires-body=true, max-size=-1, timeout=60
-# > 听书权限接口1
-Kuwo = type=http-response, pattern=^https?:\/\/[a-z0-9A-Z]+\.(kuwo|lrts)\.(cn|me)\/a\.p, script-path=https://raw.githubusercontent.com/BOBOLAOSHIV587/Rules/main/JS/KuWoMusic/JS/Kuwo.js, requires-body=true, max-size=-1, timeout=60
-# > 听书权限接口2
-Kuwo = type=http-response, pattern=^https?:\/\/.*\.kuwo\.cn\/v2\/api\/pay\/vip\/extraVipStatus, script-path=https://raw.githubusercontent.com/BOBOLAOSHIV587/Rules/main/JS/KuWoMusic/JS/Kuwo.js, requires-body=true, max-size=-1, timeout=60
-# > 新版vip接口1
-Kuwo = type=http-response, pattern=^https?:\/\/vip1\.kuwo\.cn\/vip\/enc\/user\/vip\?op=ui, script-path=https://raw.githubusercontent.com/BOBOLAOSHIV587/Rules/main/JS/KuWoMusic/JS/Kuwo.js, requires-body=true, max-size=-1, timeout=60
-# > 新版vip接口2
-Kuwo = type=http-response, pattern=^https?:\/\/vip1\.kuwo\.cn\/vip\/v2\/userbase\/vip\?op=get, script-path=https://raw.githubusercontent.com/BOBOLAOSHIV587/Rules/main/JS/KuWoMusic/JS/Kuwo.js, requires-body=true, max-size=-1, timeout=60
-# > 旧版vip接口
-Kuwo = type=http-response, pattern=^https?:\/\/vip1\.kuwo\.cn\/vip\/v2\/user\/vip\?(uid|op=ui), script-path=https://raw.githubusercontent.com/BOBOLAOSHIV587/Rules/main/JS/KuWoMusic/JS/Kuwo.js, requires-body=true, max-size=-1, timeout=60
-# > 皮肤解锁
-Kuwo = type=http-response, pattern=^https?:\/\/vip1\.kuwo\.cn\/vip\/v2\/theme, script-path=https://raw.githubusercontent.com/BOBOLAOSHIV587/Rules/main/JS/KuWoMusic/JS/Kuwo.js, requires-body=true, max-size=-1, timeout=60
-# > 下载接口
-Kuwo = type=http-request, pattern=^https?:\/\/musicpay\.kuwo\.cn\/music\.pay\?ui, script-path=https://raw.githubusercontent.com/BOBOLAOSHIV587/Rules/main/JS/KuWoMusic/JS/Kuwo.js, timeout=60
-# > 我的页面卡片
-Kuwo = type=http-response, pattern=^https?:\/\/appi.kuwo.cn/kuwopay/personal/cells, script-path=https://raw.githubusercontent.com/BOBOLAOSHIV587/Rules/main/JS/KuWoMusic/JS/Kuwo.js, requires-body=true, max-size=-1, timeout=60
-# > 音乐播放接口
-Kuwo = type=http-response, pattern=^https:\/\/[a-z0-9A-Z]+\.kuwo\.cn\/mobi\.s\?f=kwxs, script-path=https://raw.githubusercontent.com/BOBOLAOSHIV587/Rules/main/JS/KuWoMusic/JS/Kuwo.js, requires-body=true, max-size=-1, timeout=60
-
-
-
-
-
 # > 懒人听书vip
 LanRenTS = type=http-response, pattern=^https?:\/\/(shapi|gzapi).(mting.info|lanrentingshu.com)\/(yyting\/userclient\/ClientGetUserInfo|lrts\/cgi\/login\/accountLogin), script-path=https://raw.githubusercontent.com/BOBOLAOSHIV587/Rules/main/JS/LanRenTS/JS/LanRenTS.js, requires-body=true, max-size=-1, timeout=60
 
@@ -323,10 +261,6 @@ mgtk = type=http-request, pattern=^https?:\/\/mobile-stream\.api\.mgtv\.com\/v1\
 
 # > MIX 解锁特权 (需恢复购买)
 MIX = type=http-response, pattern=https?:\/\/cdn-bm\.camera360\.com\/api\/mix\/recovery, script-path=https://raw.githubusercontent.com/BOBOLAOSHIV587/Rules/main/JS/MIX/JS/MIX.js, requires-body=true, max-size=-1, timeout=60
-
-
-# > 漫读-万能电子书阅读器-解锁专业版
-漫读-解锁专业版 = type=http-response, pattern=^http:\/\/enjoy_reading_pro\.particlethink\.com:8083\/app\/api\/v\d\/user\/is_vip, script-path=https://raw.githubusercontent.com/BOBOLAOSHIV587/Rules/main/JS/ManDu/JS/ManDu.js, requires-body=true, max-size=-1, timeout=60
 
 
 # > 美图秀秀 解锁SVIP 获取ai擦除照片
@@ -453,9 +387,9 @@ Soundcloud = type=http-response,pattern=https://api-mobile.soundcloud.com/config
 
 
 
-# > Spotify(>=iOS15)部分解锁premium,音质不能设置为超高
-spotify-json = type=http-request,pattern=^https:\/\/spclient\.wg\.spotify\.com\/(artistview\/v1\/artist|album-entity-view\/v2\/album)\/,requires-body=0,script-path=https://raw.githubusercontent.com/BOBOLAOSHIV587/Rules/main/JS/Spotify-Pro/JS/Spotify-Json.js
-spotify-proto = type=http-response,pattern=^https:\/\/spclient\.wg\.spotify\.com\/(bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)$,requires-body=1,binary-body-mode=1,max-size=0,script-path=https://raw.githubusercontent.com/BOBOLAOSHIV587/Rules/main/JS/Spotify-Pro/JS/Spotify-Proto.js,script-update-interval=0
+# > Spotify解锁premium
+spotify-json = type=http-request,pattern=^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(artistview\/v1\/artist|album-entity-view\/v2\/album)\/,requires-body=0,script-path=https://raw.githubusercontent.com/BOBOLAOSHIV587/Rules/main/JS/Spotify-Pro/JS/Spotify-Json.js
+spotify-proto = type=http-response,pattern=^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)$,requires-body=1,binary-body-mode=1,max-size=0,script-path=https://raw.githubusercontent.com/BOBOLAOSHIV587/Rules/main/JS/Spotify-Pro/JS/Spotify-Proto.js,script-update-interval=0
 
 
 # > SwiftyCompiler解锁Premium Lifetime
@@ -564,22 +498,66 @@ MissAV = type=http-response, pattern=^https?:\/\/missav\.(ws|com|ai)\/(?!(.*(api
 
 
 
-# 网易云音乐播放器会员皮肤
-NeteaseCloudMusic = type=http-request, pattern=^https:\/\/interface3?\.music\.163\.com\/eapi\/playermode\/, script-path=https://raw.githubusercontent.com/BOBOLAOSHIV587/Rules/main/JS/NeteaseCloudMusic/JS/JS-1/NeteaseCloudMusic.js, timeout=60
-# 网易云音乐搜索结果会员歌曲
-NeteaseCloudMusic = type=http-request, pattern=^https:\/\/interface3?\.music\.163\.com\/eapi\/search\/complex\/(page|rec\/song\/get), script-path=https://raw.githubusercontent.com/BOBOLAOSHIV587/Rules/main/JS/NeteaseCloudMusic/JS/JS-1/NeteaseCloudMusic.js, timeout=60
-# 网易云音乐播放器会员歌曲
-NeteaseCloudMusic = type=http-request, pattern=^https:\/\/interface3?\.music\.163\.com\/eapi\/v3\/song\/detail, script-path=https://raw.githubusercontent.com/BOBOLAOSHIV587/Rules/main/JS/NeteaseCloudMusic/JS/JS-1/NeteaseCloudMusic.js, timeout=60
-NeteaseCloudMusic = type=http-request, pattern=^https:\/\/interface3?\.music\.163\.com\/eapi\/song\/(chorus|enhance\/|play\/|type\/detail\/get), script-path=https://raw.githubusercontent.com/BOBOLAOSHIV587/Rules/main/JS/NeteaseCloudMusic/JS/JS-1/NeteaseCloudMusic.js, timeout=60
-NeteaseCloudMusic = type=http-request, pattern=^https:\/\/interface3?\.music\.163\.com\/eapi\/(v1\/artist\/top\/song|v3\/discovery\/recommend\/songs), script-path=https://raw.githubusercontent.com/BOBOLAOSHIV587/Rules/main/JS/NeteaseCloudMusic/JS/JS-1/NeteaseCloudMusic.js, timeout=60
-# 网易云音乐侧边栏会员等级
-NeteaseCloudMusic = type=http-request, pattern=^https:\/\/interface3?\.music\.163\.com\/eapi\/vipnewcenter\/app\/resource\/newaccountpage, script-path=https://raw.githubusercontent.com/BOBOLAOSHIV587/Rules/main/JS/NeteaseCloudMusic/JS/JS-1/NeteaseCloudMusic.js, timeout=60
-# 网易云音乐首页歌单会员歌曲
-NeteaseCloudMusic = type=http-request, pattern=^https?:\/\/interface3?\.music\.163\.com\/eapi\/(homepage\/|v6\/)?playlist\/, script-path=https://raw.githubusercontent.com/BOBOLAOSHIV587/Rules/main/JS/NeteaseCloudMusic/JS/JS-1/NeteaseCloudMusic.js, timeout=60
-# 网易云音乐会员认证
-NeteaseCloudMusic = type=http-request, pattern=^https?:\/\/interface3?\.music\.163\.com\/eapi\/vipauth\/app\/auth\/(soundquality\/)?query, script-path=https://raw.githubusercontent.com/BOBOLAOSHIV587/Rules/main/JS/NeteaseCloudMusic/JS/JS-1/NeteaseCloudMusic.js, timeout=60
+# > 解锁会员｜网易云会员永久版
+播放器会员皮肤 = type=http-request, pattern=^https:\/\/interface3?\.music\.163\.com\/eapi\/playermode\/, script-path=https://raw.githubusercontent.com/BOBOLAOSHIV587/Rules/main/JS/NeteaseCloudMusic/JS/JS-5/NeteaseCloud.js, timeout=60
+搜索结果会员歌曲 = type=http-request, pattern=^https:\/\/interface3?\.music\.163\.com\/eapi\/search\/complex\/(page|rec\/song\/get), script-path=https://raw.githubusercontent.com/BOBOLAOSHIV587/Rules/main/JS/NeteaseCloudMusic/JS/JS-5/NeteaseCloud.js, timeout=60
+播放器会员歌曲1 = type=http-request, pattern=^https:\/\/interface3?\.music\.163\.com\/eapi\/v3\/song\/detail, script-path=https://raw.githubusercontent.com/BOBOLAOSHIV587/Rules/main/JS/NeteaseCloudMusic/JS/JS-5/NeteaseCloud.js, timeout=60
+播放器会员歌曲2 = type=http-request, pattern=^https:\/\/interface3?\.music\.163\.com\/eapi\/song\/(chorus|enhance\/|play\/|type\/detail\/get), script-path=https://raw.githubusercontent.com/BOBOLAOSHIV587/Rules/main/JS/NeteaseCloudMusic/JS/JS-5/NeteaseCloud.js, timeout=60
+播放器会员歌曲3 = type=http-request, pattern=^https:\/\/interface3?\.music\.163\.com\/eapi\/(v1\/artist\/top\/song|v3\/discovery\/recommend\/songs), script-path=https://raw.githubusercontent.com/BOBOLAOSHIV587/Rules/main/JS/NeteaseCloudMusic/JS/JS-5/NeteaseCloud.js, timeout=60
+侧边栏会员等级 = type=http-request, pattern=^https:\/\/interface3?\.music\.163\.com\/eapi\/vipnewcenter\/app\/resource\/newaccountpage, script-path=https://raw.githubusercontent.com/BOBOLAOSHIV587/Rules/main/JS/NeteaseCloudMusic/JS/JS-5/NeteaseCloud.js, timeout=60
+首页歌单会员歌曲 = type=http-request, pattern=^https?:\/\/interface3?\.music\.163\.com\/eapi\/(homepage\/|v6\/)?playlist\/, script-path=https://raw.githubusercontent.com/BOBOLAOSHIV587/Rules/main/JS/NeteaseCloudMusic/JS/JS-5/NeteaseCloud.js, timeout=60
+会员认证 = type=http-request, pattern=^https?:\/\/interface3?\.music\.163\.com\/eapi\/vipauth\/app\/auth\/(soundquality\/)?query, script-path=https://raw.githubusercontent.com/BOBOLAOSHIV587/Rules/main/JS/NeteaseCloudMusic/JS/JS-5/NeteaseCloud.js, timeout=60
+
+
+
+# > DJ音乐库-解锁VIP
+DJ音乐库 = type=http-response, pattern=^http:\/\/app-i.dj-5.com\/api\/User\/Info, script-path=https://raw.githubusercontent.com/BOBOLAOSHIV587/Rules/main/JS/DJYinYueKu/JS/DJYinYueKu.js, requires-body=true, max-size=-1, timeout=60
+
+
+# > 爱听收音机解锁会员
+爱听收音机 = type=http-response, pattern=^https?:\/\/tuoba.dida110.com\/(LRGetVipItem|LRGetMeCount).ashx, script-path=https://raw.githubusercontent.com/BOBOLAOSHIV587/Rules/main/JS/FM-ShouYinJi/JS/FM.js, requires-body=true, max-size=-1, timeout=60
+
+
+# > Notebook笔记本-解锁Pro
+Notebook笔记本 = type=http-response, pattern=^https:\/\/notebook\.zoho\.com\/api\/v1\/userprofile\/accounts\/payment\?action=(get_current_plan_detail|get_feature_template)(&include_expired_plans=true|&include_purchase_platform=false|&platform=ios)?, script-path=https://raw.githubusercontent.com/BOBOLAOSHIV587/Rules/main/JS/Notebook/JS/JS-1/Notebook.js, requires-body=true, max-size=-1, timeout=60
+
+
+# > 熊猫脑洞小说VIP
+熊猫脑洞小说VIP = type=http-response, pattern=^https?:\/\/xiaoshuo.xmxsapp.com\/api\/v3\/user\/my-center, script-path=https://raw.githubusercontent.com/BOBOLAOSHIV587/Rules/main/JS/XiongMaoNDXS/JS/XMNDXS.js, requires-body=true, max-size=-1, timeout=60
+
+
+# > 兔U-引领广播剧潮牌 Unlock VIP SVIP
+兔U = type=http-response, pattern=^https?:\/\/api.zuidie.net\/v1\/user\/info\/, script-path=https://raw.githubusercontent.com/BOBOLAOSHIV587/Rules/main/JS/Tu-U/JS/Tu-U.js, requires-body=true, max-size=-1, timeout=60
+
+
+# > YandexMusic-解锁VIP
+YandexMusic = type=http-response, pattern=https://api.music.yandex.net/account/status.*, script-path=https://raw.githubusercontent.com/BOBOLAOSHIV587/Rules/main/JS/YandexMusic/JS/YandexMusic.js, requires-body=true, max-size=-1, timeout=60
+
+
+# > VK音乐-解锁VIP
+VK音乐 = type=http-response, pattern=https://api.moosic.io/(user/info|subscription/presentation/current_subscriptions_data), script-path=https://raw.githubusercontent.com/BOBOLAOSHIV587/Rules/main/JS/VKMusic/JS/VKMusic.js, requires-body=true, max-size=-1, timeout=60
+
+
+
+# > 酷我音乐纯净版解锁VIP
+酷我音乐纯净版会员 = type=http-response, pattern=http://vip1.kuwo.cn/vip/v2/user/vip, script-path=https://raw.githubusercontent.com/BOBOLAOSHIV587/Rules/main/JS/KuWoMusicPE/JS/KuWoMusicPE.js, requires-body=true, timeout=60
+酷我音乐纯净版下载 = type=http-response, pattern=^http?:\/\/musicpay\.kuwo\.cn\/music\.pay\?newver=3, script-path=https://raw.githubusercontent.com/BOBOLAOSHIV587/Rules/main/JS/KuWoMusicPE/JS/KuWoMusicPE.js, requires-body=true, timeout=60
+酷我音乐纯净版播放 = type=http-request, pattern=^http?:\/\/nmobi\.kuwo\.cn\/mobi\.s\?f=kuwo&q=, script-path=https://raw.githubusercontent.com/BOBOLAOSHIV587/Rules/main/JS/KuWoMusicPE/JS/KuWoMusicPE.js, requires-body=true, timeout=60
+
+
+
+# > 酷我音乐解锁VIP
+酷我音乐解锁VIP = type=http-response, pattern=^https?:\/\/(?:musicpay|nmobi|vip1|audiobookpay|tingshu|anymatch|mobilebasedata|rich|mobilead)\.kuwo\.cn\/(?:music\.pay\?newver=\d+|mobi.s\?f=kwxs|vip\/(?:enc\/user\/vip\?op=ui&uid=|v2\/theme\?op=gd)|a\.p|v2\/api\/pay\/user\/info|api\/music\/info|AdService\/kaiping\/adinfo|EcomResourceServer\/adEarnGuajian\/adinfo), script-path=https://raw.githubusercontent.com/BOBOLAOSHIV587/Rules/main/JS/KuWoMusic/JS/JS-3/KuWo.js, requires-body=true, max-size=-1, timeout=60
+
+
+
+
+# > 波点音乐 会员调试 + 去广告 + 下载功能 + 付费专辑解锁
+波点音乐 = type=http-response, pattern=^https?:\/\/(?:(?:bd-api|h5app|bodianyin|ab-bodian)\.kuwo\.cn\/(?:api\/(?:ucenter\/users\/(?:pub|login)|play\/(?:music\/v2\/(?:audioUrl|checkRight)|advert\/info)|service\/(?:music\/(?:info|download\/(?:info|config))|home\/module|global\/config\/(?:scene|vipEnter)|banner\/positions|advert\/config)|search\/topic\/word\/list|pay\/(?:vip\/(?:invitation\/(?:assist\/popup|swell)|lowPriceText)|sp\/actVip|audition\/url)|advert\/free\/config|popup\/start\/info|abtest\/ui\/info|rec\/feed)|abtest\/ui\/info)|us\.l\.qq\.com\/exapp|xs\.gdt\.qq\.com\/style_factory\/template_list), script-path=https://raw.githubusercontent.com/BOBOLAOSHIV587/Rules/main/JS/BoDianMusic/JS/BoDianMusic.js, requires-body=true, max-size=-1, timeout=60
+
+
 
 
 
 [MITM]
-hostname = %APPEND% api.agcplayer.com, a.ajmide.com, api.adblockpro.app, *.adguard.org, *.aliyundrive.com, *.alipan.com, api.alohaprofile.com, *.aoscdn.com, *.apsapp.cn, app.autocad360.com, user-b612-api.snow.me, pan.baidu.com, baimiao.uzero.cn, api.mr.pixocial.com, newbeee-api.beautyplus.com, apimboom2.globaldelight.net, biz.caiyunapp.com, interpreter.cyapi.cn, *.camscanner.com, *.intsig.net, api2.vilipix.com, api.craft.do, cubox.pro, ai.xiuxiu.meitu.com, api-sub.meitu.com, dj.palmestore.com, media.deezer.com, mobile-new.chinaeew.cn, *.baidu.com, *.pdfexpert.com, backend.getdrafts.com, dreamfaceapp.com, mb3admin.com, www.mb3admin.com, api-production.endel.io, *.snow.me, api-*.facereplacerext.com, www.kkmop.com, filmicpro.oracle.bendingspoonsapps.com, appv2.filmix.com.cn, payments.invideo.io, mobile.flightradar24.com, api.purchasely.io, *.vlognow.me, *.oracle.bendingspoonsapps.com, api.funimate.com, api.github.com, isi.csan.goodnotes.com, tailor.tomax.xyz, ifttt.com, nobyda.app, in.m.jd.com, api*.faceu.mobi, api3-lq.faceu.mobi, commerce-api-lf.faceu.mobi, commerce-api-lq.faceu.mobi, lv-api-lq.ulikecam.com, lv-api-hl.ulikecam.com, *.kuwo.cn, *.lrts.me, shapi.mting.info, shapi.lanrentingshu.com, gzapi.lanrentingshu.com, shapi.mting.info:443, *mgtv.com, cdn-bm.camera360.com, pro.particlethink.com, *.xiuxiu.meitu.com, api.posters.meitu.com, api-sub.meitu.com, *.meiyan.com, bmall.camera360.com, *.api.moji.com, api.moises.ai, www.mymorpholio.com, *.apphud.com, api2.mubu.com, apic.musixmatch.com, premium-api.myfitnesspal.com, nanie.flyingeffect.com, restore-access.indream.app, nicegram.cloud, notability.com, lcs-mobile-cops.adobe.io, peakvisor.com, service.perfect365.com, api.meiease.*, api.picsart.*, api-drive.mypikpak.com, oauth.secure.pixiv.net, api.polaxiong.com, purchase-qingtu-api.b612kaji.com, api-qingtu.kajicam.com, www.qobuz.com, tfbook.taoyuewenhua.net, tybook.taoyuewenhua.net, gql.reddit.com, gql-fed.reddit.com, commerce-api.faceu.mobi, api3-misc-lf.retouchpics.com, shimo.im, ocean.shuqireader.com, *-slidebox-ios-prod.cloudfunctions.net, snailsleep.net, api-mobile.soundcloud.com, spclient.wg.spotify.com, api.qonversion.io, scibug.com, api.tidal.com, api.termius.com, api2.vlognow.me, medi.dxzzy321.top, *.docer.wps.cn, vipapi.wps.cn, account.wps.cn, *.wps.cn, p.du.163.com, *.wallpaperscraft.com, security.wechat.com, weixin110.qq.com, education.github.com, *xmind.*, *xunlei.com, api-shoulei-ssl.xunlei.com, app-ios.y2002.com, api.ieasou.com, dict.youdao.com, business.youdao.com, api-overmind.youdao.com, cdke.youdao.com, *.radio.cn, 60.205.171.165, service.ilovepdf.com, *.miguvideo.com, *.migu.cn, *.upwqjcun.cc, haijiao.com, missav.ai, dj.palmestore.com, *.music.163.com
+hostname = %APPEND% api.agcplayer.com, a.ajmide.com, api.adblockpro.app, *.adguard.org, *.aliyundrive.com, *.alipan.com, api.alohaprofile.com, *.aoscdn.com, *.apsapp.cn, app.autocad360.com, user-b612-api.snow.me, pan.baidu.com, baimiao.uzero.cn, api.mr.pixocial.com, newbeee-api.beautyplus.com, apimboom2.globaldelight.net, biz.caiyunapp.com, *.camscanner.com, *.intsig.net, api2.vilipix.com, ios.chat.openai.com, api.craft.do, cubox.pro, ai.xiuxiu.meitu.com, api-sub.meitu.com, dj.palmestore.com, media.deezer.com, mobile-new.chinaeew.cn, *.pdfexpert.com, backend.getdrafts.com, dreamfaceapp.com, mb3admin.com, www.mb3admin.com, api-production.endel.io, *.snow.me, api-*.facereplacerext.com, www.kkmop.com, filmicpro.oracle.bendingspoonsapps.com, appv2.filmix.com.cn, payments.invideo.io, mobile.flightradar24.com, api.purchasely.io, *.vlognow.me, *.oracle.bendingspoonsapps.com, api.funimate.com, api.github.com, isi.csan.goodnotes.com, tailor.tomax.xyz, ifttt.com, nobyda.app, in.m.jd.com, api*.faceu.mobi, api3-lq.faceu.mobi, commerce-api-lf.faceu.mobi, commerce-api-lq.faceu.mobi, lv-api-lq.ulikecam.com, lv-api-hl.ulikecam.com, *.kuwo.cn, *.lrts.me, shapi.mting.info, shapi.lanrentingshu.com, gzapi.lanrentingshu.com, shapi.mting.info:443, *mgtv.com, cdn-bm.camera360.com, *.xiuxiu.meitu.com, api.posters.meitu.com, api-sub.meitu.com, *.meiyan.com, bmall.camera360.com, *.api.moji.com, api.moises.ai, www.mymorpholio.com, *.apphud.com, api2.mubu.com, apic.musixmatch.com, premium-api.myfitnesspal.com, nanie.flyingeffect.com, restore-access.indream.app, nicegram.cloud, notability.com, lcs-mobile-cops.adobe.io, peakvisor.com, service.perfect365.com, api.meiease.*, api.picsart.*, api-drive.mypikpak.com, oauth.secure.pixiv.net, api.polaxiong.com, purchase-qingtu-api.b612kaji.com, api-qingtu.kajicam.com, www.qobuz.com, tfbook.taoyuewenhua.net, tybook.taoyuewenhua.net, gql.reddit.com, gql-fed.reddit.com, commerce-api.faceu.mobi, api3-misc-lf.retouchpics.com, shimo.im, ocean.shuqireader.com, *-slidebox-ios-prod.cloudfunctions.net, snailsleep.net, api-mobile.soundcloud.com, spclient.wg.spotify.com, *spclient.spotify.com, api.qonversion.io, scibug.com, api.tidal.com, api.termius.com, api2.vlognow.me, medi.dxzzy321.top, *.docer.wps.cn, vipapi.wps.cn, account.wps.cn, *.wps.cn, p.du.163.com, *.wallpaperscraft.com, security.wechat.com, weixin110.qq.com, education.github.com, *xmind.*, *xunlei.com, api-shoulei-ssl.xunlei.com, app-ios.y2002.com, api.ieasou.com, dict.youdao.com, business.youdao.com, api-overmind.youdao.com, cdke.youdao.com, *.radio.cn, 60.205.171.165, service.ilovepdf.com, *.miguvideo.com, *.migu.cn, *.upwqjcun.cc, haijiao.com, missav.ai, dj.palmestore.com, *.music.163.com, app-i.dj-5.com, tuoba.dida110.com, notebook.zoho.com, xiaoshuo.xmxsapp.com, api.zuidie.net, api.music.yandex.net, api.moosic.io, h5s.kuwo.cn, anymatch.kuwo.cn, musicpay.kuwo.cn, mobilebasedata.kuwo.cn, vip1.kuwo.cn, rich.kuwo.cn, mobilead.kuwo.cn, *.kuwo.cn, bd-api.kuwo.cn, *.kuwo.*, ad.tencentmusic.com, *.l.qq.com, 39.156.123.46:443, bd-api.kuwo.com, 39.156.123.46, 39.156.12*.*:443, h5app.kuwo.cn, bodianimgcdn.kuwo.cn, h5s.kuwo.cn, 39.156.121.20:443, 111.30.171.170:443, 39.156.121.21:443, h5s.kuwo.cn, 39.156.121.20:443, 101.42.133.54:443, ab-bodian.kuwo.cn, 39.156.121.65:443, 39.156.121.*:443, bd-api.kuwo.cn:443, ab-bodian.kuwo.cn:443, 39.156.121.60:80, xs.gdt.qq.com
