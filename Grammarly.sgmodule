@@ -1,11 +1,11 @@
 #!name=Grammarly Premium
 #!desc=Grammarly Pro/Premium unlock script for iPad & iOS (Gateway Endpoint)
 #!category=Unlock
-#!homepage=https://yfamilys.com
-#!author=yqc007, Hausd0rff
+#!homepage=https://github.com/HaoDH/Surge_module
+#!author=HaoDH, yqc007, Hausd0rff
 
 [MITM]
 hostname = %APPEND% gateway.grammarly.com
 
 [Script]
-Grammarly = type=http-response,pattern=^https?:\/\/gateway\.grammarly\.com\/subscription\/api\/v1\/subscription$,script-path=https://raw.githubusercontent.com/yqc007/QuantumultX/master/GrammarlyPremiumCrack.js,requires-body=true,max-size=524288
+Grammarly = type=http-response,pattern=^https?:\/\/gateway\.grammarly\.com\/subscription\/api\/v1\/subscription$,script-path=https://raw.githubusercontent.com/HaoDH/Surge_module/refs/heads/main/GrammarlyPremiumCrack.js,requires-body=true,max-size=524288
