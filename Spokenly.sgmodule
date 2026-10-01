@@ -1,0 +1,11 @@
+#!name=Spokenly Unlimited
+#!desc=Spokenly unlock script for iOS & iPadOS
+#!category=Unlock
+#!homepage=https://github.com/HaoDH/Surge_module
+#!author=HaoDH
+
+[MITM]
+hostname = %APPEND% api.spokenly.app
+
+[Script]
+Spokenly_Unlock = type=http-response,pattern=^https:\/\/api\.spokenly\.app\/spokenly\/device\/check-free-limit$,script-path=https://raw.githubusercontent.com/HaoDH/Surge_module/refs/heads/main/SpokenlyUnlock.js,requires-body=true,max-size=524288
