@@ -1,0 +1,11 @@
+#!name=VTVgo Unlock / Modify
+#!desc=Modify user info and subscription status for VTVgo app
+#!category=Unlock
+#!homepage=https://github.com/HaoDH/Surge_module
+#!author=HaoDH
+
+[MITM]
+hostname = %APPEND% api.vtvdigital.org
+
+[Script]
+VTVgo_UserInfo = type=http-response,pattern=^https:\/\/api\.vtvdigital\.org\/user-core-api\/v21\.0\/user\/me$,script-path=https://raw.githubusercontent.com/HaoDH/Surge_module/refs/heads/main/VTVgoUnlock.js,requires-body=true,max-size=524288
